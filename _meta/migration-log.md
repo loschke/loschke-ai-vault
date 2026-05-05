@@ -35,3 +35,71 @@ Chronologisch, append-only. Zeigt was wann von wo nach wo migriert wurde.
 - [2026-05-05] ai-coding/Context-Engineering-Die-6-Bausteine.md ← 02_KNOWLEDGE/AI-Coding/Context Engineering – Die 6 Bausteine.md
 - [2026-05-05] ai-coding/UI-Prompt-Bibliothek.md ← 02_KNOWLEDGE/AI-Coding/UI-Prompt-Bibliothek.md
 - [2026-05-05] ai-coding/UI-Prompting-fuer-Design-Agents.md ← 02_KNOWLEDGE/AI-Coding/UI-Prompting für Design-Agents.md
+
+## 2026-05-05 — migrate ai-agents (31 files)
+
+- [2026-05-05] ai-agents/_moc.md ← 02_KNOWLEDGE/AI-Agents/_MOC.md
+- [2026-05-05] ai-agents/Agent-Bauplan-6-Bausteine.md ← 02_KNOWLEDGE/AI-Agents/Agent-Bauplan-6-Bausteine.md
+- [2026-05-05] ai-agents/Agent-UseCases-nach-Einsatztyp.md ← 02_KNOWLEDGE/AI-Agents/Agent-UseCases-nach-Einsatztyp.md
+- [2026-05-05] ai-agents/Anatomie-eines-KI-Agenten.md ← 02_KNOWLEDGE/AI-Agents/Anatomie-eines-KI-Agenten.md
+- [2026-05-05] ai-agents/Assistenz-Architektur.md ← 02_KNOWLEDGE/AI-Agents/Assistenz-Architektur.md
+- [2026-05-05] ai-agents/Cluster-vs-Bausteine.md ← 02_KNOWLEDGE/AI-Agents/Cluster-vs-Bausteine.md
+- [2026-05-05] ai-agents/Content-ist-nicht-Context.md ← 02_KNOWLEDGE/AI-Agents/Content-ist-nicht-Context.md
+- [2026-05-05] ai-agents/Feature-Profile-Methodik.md ← 02_KNOWLEDGE/AI-Agents/Feature-Profile-Methodik.md
+- [2026-05-05] ai-agents/Gedaechtnis-Context-Engineering.md ← 02_KNOWLEDGE/AI-Agents/Gedaechtnis-Context-Engineering.md
+- [2026-05-05] ai-agents/Gedaechtnis-Implementierung.md ← 02_KNOWLEDGE/AI-Agents/Gedaechtnis-Implementierung.md
+- [2026-05-05] ai-agents/Intentionen-3-Ebenen.md ← 02_KNOWLEDGE/AI-Agents/Intentionen-3-Ebenen.md
+- [2026-05-05] ai-agents/Kompass-Implementierung.md ← 02_KNOWLEDGE/AI-Agents/Kompass-Implementierung.md
+- [2026-05-05] ai-agents/Kompass-Verfassung.md ← 02_KNOWLEDGE/AI-Agents/Kompass-Verfassung.md
+- [2026-05-05] ai-agents/Kontextdimensionen.md ← 02_KNOWLEDGE/AI-Agents/Kontextdimensionen.md
+- [2026-05-05] ai-agents/Prozessbewertung-Agent-Einsatz.md ← 02_KNOWLEDGE/AI-Agents/Prozessbewertung-Agent-Einsatz.md
+- [2026-05-05] ai-agents/Sensor-Implementierung.md ← 02_KNOWLEDGE/AI-Agents/Sensor-Implementierung.md
+- [2026-05-05] ai-agents/Sensor-Intentionserkennung.md ← 02_KNOWLEDGE/AI-Agents/Sensor-Intentionserkennung.md
+- [2026-05-05] ai-agents/Stimme-Implementierung.md ← 02_KNOWLEDGE/AI-Agents/Stimme-Implementierung.md
+- [2026-05-05] ai-agents/Stimme-Kommunikation.md ← 02_KNOWLEDGE/AI-Agents/Stimme-Kommunikation.md
+- [2026-05-05] ai-agents/Verfassung-vs-Regelwerk.md ← 02_KNOWLEDGE/AI-Agents/Verfassung-vs-Regelwerk.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/00_lies-mich.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/00_lies-mich.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/01_was-ist-ein-agent.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/01_was-ist-ein-agent.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/02_gesamtmodell.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/02_gesamtmodell.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/03_sensor.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/03_sensor.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/04_motor.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/04_motor.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/05_stimme.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/05_stimme.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/06_kompass.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/06_kompass.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/07_pruefstand.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/07_pruefstand.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/08_drei-typen.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/08_drei-typen.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/09_wann-lohnt-sich-was.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/09_wann-lohnt-sich-was.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/99_glossar.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/99_glossar.md
+
+## 2026-05-05 — migrate ai-agents (31 files)
+
+- [2026-05-05] ai-agents/_moc.md ← 02_KNOWLEDGE/AI-Agents/_MOC.md
+- [2026-05-05] ai-agents/Agent-Bauplan-6-Bausteine.md ← 02_KNOWLEDGE/AI-Agents/Agent-Bauplan-6-Bausteine.md
+- [2026-05-05] ai-agents/Agent-UseCases-nach-Einsatztyp.md ← 02_KNOWLEDGE/AI-Agents/Agent-UseCases-nach-Einsatztyp.md
+- [2026-05-05] ai-agents/Anatomie-eines-KI-Agenten.md ← 02_KNOWLEDGE/AI-Agents/Anatomie-eines-KI-Agenten.md
+- [2026-05-05] ai-agents/Assistenz-Architektur.md ← 02_KNOWLEDGE/AI-Agents/Assistenz-Architektur.md
+- [2026-05-05] ai-agents/Cluster-vs-Bausteine.md ← 02_KNOWLEDGE/AI-Agents/Cluster-vs-Bausteine.md
+- [2026-05-05] ai-agents/Content-ist-nicht-Context.md ← 02_KNOWLEDGE/AI-Agents/Content-ist-nicht-Context.md
+- [2026-05-05] ai-agents/Feature-Profile-Methodik.md ← 02_KNOWLEDGE/AI-Agents/Feature-Profile-Methodik.md
+- [2026-05-05] ai-agents/Gedaechtnis-Context-Engineering.md ← 02_KNOWLEDGE/AI-Agents/Gedaechtnis-Context-Engineering.md
+- [2026-05-05] ai-agents/Gedaechtnis-Implementierung.md ← 02_KNOWLEDGE/AI-Agents/Gedaechtnis-Implementierung.md
+- [2026-05-05] ai-agents/Intentionen-3-Ebenen.md ← 02_KNOWLEDGE/AI-Agents/Intentionen-3-Ebenen.md
+- [2026-05-05] ai-agents/Kompass-Implementierung.md ← 02_KNOWLEDGE/AI-Agents/Kompass-Implementierung.md
+- [2026-05-05] ai-agents/Kompass-Verfassung.md ← 02_KNOWLEDGE/AI-Agents/Kompass-Verfassung.md
+- [2026-05-05] ai-agents/Kontextdimensionen.md ← 02_KNOWLEDGE/AI-Agents/Kontextdimensionen.md
+- [2026-05-05] ai-agents/Prozessbewertung-Agent-Einsatz.md ← 02_KNOWLEDGE/AI-Agents/Prozessbewertung-Agent-Einsatz.md
+- [2026-05-05] ai-agents/Sensor-Implementierung.md ← 02_KNOWLEDGE/AI-Agents/Sensor-Implementierung.md
+- [2026-05-05] ai-agents/Sensor-Intentionserkennung.md ← 02_KNOWLEDGE/AI-Agents/Sensor-Intentionserkennung.md
+- [2026-05-05] ai-agents/Stimme-Implementierung.md ← 02_KNOWLEDGE/AI-Agents/Stimme-Implementierung.md
+- [2026-05-05] ai-agents/Stimme-Kommunikation.md ← 02_KNOWLEDGE/AI-Agents/Stimme-Kommunikation.md
+- [2026-05-05] ai-agents/Verfassung-vs-Regelwerk.md ← 02_KNOWLEDGE/AI-Agents/Verfassung-vs-Regelwerk.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/00_lies-mich.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/00_lies-mich.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/01_was-ist-ein-agent.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/01_was-ist-ein-agent.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/02_gesamtmodell.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/02_gesamtmodell.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/03_sensor.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/03_sensor.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/04_motor.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/04_motor.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/05_stimme.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/05_stimme.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/06_kompass.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/06_kompass.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/07_pruefstand.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/07_pruefstand.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/08_drei-typen.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/08_drei-typen.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/09_wann-lohnt-sich-was.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/09_wann-lohnt-sich-was.md
+- [2026-05-05] ai-agents/Ultimate_Leitfaden/99_glossar.md ← 02_KNOWLEDGE/AI-Agents/Ultimate_Leitfaden/99_glossar.md

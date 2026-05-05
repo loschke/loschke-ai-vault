@@ -12,3 +12,7 @@
 ## [2026-05-05] index   | knowledge/index.md regenerated (3 areas, 25 files)
 ## [2026-05-05] lint    | 0 errors, 9 warnings (cross-area-link, expected)
 ## [2026-05-05] skip    | ai-automation (Bereich leer, MOC nur Skeleton)
+## [2026-05-05] tooling | sub-dir-support: lint + index + migrator erweitert (rekursive paths, Sub-Dir-Heuristik, basename-cross-area-resolve, basename-not-found → warning)
+## [2026-05-05] migrate | ai-agents (31 files: 20 top-level + 11 in Ultimate_Leitfaden/) | Konsolidierungs-Audit deferred; Source-Frontmatter-Feld 'related:' nicht übernommen
+## [2026-05-05] index   | knowledge/index.md regenerated (4 areas, 56 files)
+## [2026-05-05] lint    | 0 errors, 13 warnings (cross-area expected, 2 basename-not-found → warten auf ai-strategy migration)

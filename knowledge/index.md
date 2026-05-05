@@ -3,7 +3,44 @@
 > Auto-generiert von `scripts/build-index.mjs` am 2026-05-05.
 > Nicht manuell editieren.
 
-**Bereiche:** 3 · **Files:** 25
+**Bereiche:** 4 · **Files:** 56
+
+## ai-agents
+
+MOC: [`_moc.md`](./ai-agents/_moc.md) · 30 Einträge
+
+| Pfad | Title | Type | Status | Updated |
+|---|---|---|---|---|
+| `./` | [Agent-Bauplan: Die 6 Bausteine eines guten Agenten](./ai-agents/Agent-Bauplan-6-Bausteine.md) | `framework` | `stable` | 2026-04-09 |
+| `./` | [Agent-Use-Cases nach Einsatztyp](./ai-agents/Agent-UseCases-nach-Einsatztyp.md) | `reference` | `stable` | 2026-04-08 |
+| `./` | [Anatomie eines KI-Agenten](./ai-agents/Anatomie-eines-KI-Agenten.md) | `reference` | `stable` | 2026-04-10 |
+| `./` | [Assistenz-Architektur fuer KI-basierte Interaktion](./ai-agents/Assistenz-Architektur.md) | `framework` | `stable` | 2026-03-09 |
+| `./` | [Cluster-Dokument vs. Atomare Bausteine](./ai-agents/Cluster-vs-Bausteine.md) | `concept` | `stable` | 2026-03-09 |
+| `./` | [Content ist nicht Context](./ai-agents/Content-ist-nicht-Context.md) | `concept` | `stable` | 2026-03-09 |
+| `./` | [Feature-Profile-Methodik](./ai-agents/Feature-Profile-Methodik.md) | `method` | `stable` | 2026-03-09 |
+| `./` | [Gedaechtnis — Context Engineering](./ai-agents/Gedaechtnis-Context-Engineering.md) | `framework` | `stable` | 2026-03-09 |
+| `./` | [Gedächtnis — Technische Implementierung](./ai-agents/Gedaechtnis-Implementierung.md) | `guide` | `living` | 2026-03-09 |
+| `./` | [Intentionen: Das 3-Ebenen-Framework](./ai-agents/Intentionen-3-Ebenen.md) | `framework` | `stable` | 2026-03-09 |
+| `./` | [Kompass — Technische Implementierung](./ai-agents/Kompass-Implementierung.md) | `guide` | `living` | 2026-03-09 |
+| `./` | [Kompass — Verfassung](./ai-agents/Kompass-Verfassung.md) | `framework` | `stable` | 2026-03-09 |
+| `./` | [Die 5 Kontextdimensionen](./ai-agents/Kontextdimensionen.md) | `framework` | `stable` | 2026-03-09 |
+| `./` | [Prozessbewertung: Welcher KI-Einsatztyp passt?](./ai-agents/Prozessbewertung-Agent-Einsatz.md) | `method` | `stable` | 2026-04-08 |
+| `./` | [Sensor — Technische Implementierung](./ai-agents/Sensor-Implementierung.md) | `guide` | `living` | 2026-03-09 |
+| `./` | [Sensor — Intentionserkennung](./ai-agents/Sensor-Intentionserkennung.md) | `framework` | `stable` | 2026-03-09 |
+| `./` | [Stimme — Technische Implementierung](./ai-agents/Stimme-Implementierung.md) | `guide` | `living` | 2026-03-09 |
+| `./` | [Stimme — Kommunikation](./ai-agents/Stimme-Kommunikation.md) | `framework` | `stable` | 2026-03-09 |
+| `./` | [Verfassung statt Regelwerk](./ai-agents/Verfassung-vs-Regelwerk.md) | `concept` | `stable` | 2026-03-09 |
+| `Ultimate_Leitfaden/` | [Ultimate Leitfaden — Lies mich](./ai-agents/Ultimate_Leitfaden/00_lies-mich.md) | `moc` | `living` | 2026-04-28 |
+| `Ultimate_Leitfaden/` | [Teil 1 — Was ist ein Agent?](./ai-agents/Ultimate_Leitfaden/01_was-ist-ein-agent.md) | `guide` | `draft` | 2026-04-28 |
+| `Ultimate_Leitfaden/` | [Teil 2 — Das Gesamtmodell](./ai-agents/Ultimate_Leitfaden/02_gesamtmodell.md) | `guide` | `draft` | 2026-04-28 |
+| `Ultimate_Leitfaden/` | [Teil 3 — Sensor](./ai-agents/Ultimate_Leitfaden/03_sensor.md) | `guide` | `draft` | 2026-04-28 |
+| `Ultimate_Leitfaden/` | [Teil 4 — Motor](./ai-agents/Ultimate_Leitfaden/04_motor.md) | `guide` | `draft` | 2026-04-28 |
+| `Ultimate_Leitfaden/` | [Teil 5 — Stimme](./ai-agents/Ultimate_Leitfaden/05_stimme.md) | `guide` | `draft` | 2026-04-28 |
+| `Ultimate_Leitfaden/` | [Teil 6 — Kompass](./ai-agents/Ultimate_Leitfaden/06_kompass.md) | `guide` | `draft` | 2026-04-28 |
+| `Ultimate_Leitfaden/` | [Teil 7 — Prüfstand](./ai-agents/Ultimate_Leitfaden/07_pruefstand.md) | `guide` | `draft` | 2026-04-28 |
+| `Ultimate_Leitfaden/` | [Teil 8 — Drei Typen am Pflege-Beispiel](./ai-agents/Ultimate_Leitfaden/08_drei-typen.md) | `guide` | `draft` | 2026-04-28 |
+| `Ultimate_Leitfaden/` | [Teil 9 — Wann lohnt sich was](./ai-agents/Ultimate_Leitfaden/09_wann-lohnt-sich-was.md) | `guide` | `draft` | 2026-04-28 |
+| `Ultimate_Leitfaden/` | [Glossar](./ai-agents/Ultimate_Leitfaden/99_glossar.md) | `vocabulary` | `draft` | 2026-04-28 |
 
 ## ai-coding
 
@@ -52,8 +89,10 @@ MOC: [`_moc.md`](./ai-tools/_moc.md) · 1 Einträge
 
 ## Counts pro `type`
 
-- `reference`: 7
-- `framework`: 6
-- `concept`: 5
-- `method`: 3
-- `guide`: 1
+- `framework`: 14
+- `guide`: 14
+- `reference`: 9
+- `concept`: 8
+- `method`: 5
+- `moc`: 1
+- `vocabulary`: 1
