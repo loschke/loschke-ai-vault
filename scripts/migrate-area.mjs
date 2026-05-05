@@ -48,6 +48,9 @@ for (const file of mapping.files) {
     continue;
   }
 
+  // Sub-Dir-Support: Target-Dir sicherstellen falls verschachtelt
+  fs.mkdirSync(path.dirname(targetFile), { recursive: true });
+
   const raw = fs.readFileSync(sourceFile, 'utf8');
   const parsed = matter(raw);
   const oldFm = parsed.data || {};
@@ -57,13 +60,17 @@ for (const file of mapping.files) {
   const isMoc = file.type === 'moc';
   const fallbackTitle = file.target.replace(/\.md$/, '').replace(/^_/, '').replace(/-/g, ' ');
 
+  // Tags-Fallback: alte tags > moc_defaults.tags > [area]
+  const fallbackTags = isMoc ? (mocDefaults.tags || [constants.area, 'moc']) : [constants.area];
+  const tags = (Array.isArray(oldFm.tags) && oldFm.tags.length > 0) ? oldFm.tags : fallbackTags;
+
   const newFm = {
     title: oldFm.title || (isMoc ? mocDefaults.title : fallbackTitle),
     type: file.type,
     status: file.status,
     created: oldFm.created || migrationDate,
     updated: oldFm.updated || oldFm.created || migrationDate,
-    tags: oldFm.tags || (isMoc ? mocDefaults.tags : []),
+    tags: tags,
     sources: file.sources,
     area: constants.area,
     brand_fit: constants.brand_fit,

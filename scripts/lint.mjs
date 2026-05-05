@@ -49,25 +49,31 @@ const indexAndLog = new Set([
 ]);
 const knowledgeFiles = allFiles.filter(f => !indexAndLog.has(f));
 
-// Sammle alle Filenames pro Bereich für Wikilink-Auflösung
-const filesByArea = {}; // areaName -> Set<basename without .md>
-const allBasenames = new Set();
+// Sammle alle Filenames pro Bereich für Wikilink-Auflösung (Sub-Dir-aware)
+// pro Bereich: Set<relativePath ohne .md> + Map<basename, relativePath[]> für basename-only-Lookup + Set<subDirNames>
+const filesByArea = {}; // areaName -> { paths, byBase, subDirs }
 for (const f of knowledgeFiles) {
   const relP = rel(f);
-  const parts = relP.split('/'); // knowledge/<area>/<file>.md
+  const parts = relP.split('/'); // knowledge/<area>/[<sub>/...]<file>.md
   if (parts.length < 3) continue;
   const area = parts[1];
+  const subPath = parts.slice(2).join('/').replace(/\.md$/, ''); // z.B. "Ultimate_Leitfaden/Some-File" oder "Some-File"
   const base = parts[parts.length - 1].replace(/\.md$/, '');
-  filesByArea[area] = filesByArea[area] || new Set();
-  filesByArea[area].add(base);
-  allBasenames.add(base);
+  if (!filesByArea[area]) filesByArea[area] = { paths: new Set(), byBase: new Map(), subDirs: new Set() };
+  filesByArea[area].paths.add(subPath);
+  if (!filesByArea[area].byBase.has(base)) filesByArea[area].byBase.set(base, []);
+  filesByArea[area].byBase.get(base).push(subPath);
+  // Sub-Dir-Namen sammeln (alle Top-Level-Komponenten unter <area>/, lowercase)
+  if (parts.length > 3) {
+    filesByArea[area].subDirs.add(parts[2].toLowerCase());
+  }
 }
 const knownAreas = new Set(Object.keys(filesByArea));
 
-// Regel 4: _moc.md pro Bereich
+// Regel 4: _moc.md pro Bereich (Top-Level reicht; Sub-Dir-MOCs sind optional)
 for (const area of knownAreas) {
-  if (!filesByArea[area].has('_moc')) {
-    errors.push({ file: `knowledge/${area}/`, rule: 'moc-missing', msg: `Bereich '${area}' hat keine _moc.md` });
+  if (!filesByArea[area].paths.has('_moc')) {
+    errors.push({ file: `knowledge/${area}/`, rule: 'moc-missing', msg: `Bereich '${area}' hat keine _moc.md auf Top-Level` });
   }
 }
 
@@ -145,33 +151,91 @@ for (const file of knowledgeFiles) {
     }
   }
 
-  // Regel 3 (Wikilinks)
+  // Regel 3 (Wikilinks) — Sub-Dir-aware
   const links = extractWikilinks(parsed.content);
   for (const link of links) {
     // Intra-file anchor link (Obsidian: [[#Heading]]) → ignorieren
     if (link.startsWith('#')) continue;
     // Trailing Backslash (Markdown-Escape im Source) entfernen
     const stripped = link.replace(/\\+$/, '').trim();
-    // Format: "Filename" oder "area/Filename" oder "area/_MOC"
     const cleaned = stripped.replace(/\.md$/, '').replace(/#.*$/, ''); // strip anchor on file links
     if (!cleaned) continue;
-    let targetArea = area;
-    let targetBase = cleaned;
-    if (cleaned.includes('/')) {
-      const segs = cleaned.split('/');
-      targetArea = segs[0].toLowerCase();
-      targetBase = segs[segs.length - 1];
-    }
-    // Normalize MOC casing
-    const targetBaseNorm = targetBase === '_MOC' ? '_moc' : targetBase;
 
-    if (knownAreas.has(targetArea)) {
-      const set = filesByArea[targetArea];
-      if (!set.has(targetBaseNorm)) {
-        errors.push({ file: relP, rule: 'broken-link', msg: `Wikilink '[[${link}]]' → Ziel nicht gefunden in Bereich '${targetArea}'` });
+    // MOC-Casing normalisieren: trailing _MOC → _moc
+    const norm = cleaned.replace(/\b_MOC$/i, '_moc');
+
+    // Heuristik:
+    // 1. Link enthält '/' → erstes Segment prüfen
+    //    a) ist knownArea (case-insensitive) → cross-area, rest = subPath
+    //    b) ist Sub-Dir des aktuellen Bereichs → intra-area, kompletter Path
+    //    c) sonst → cross-area-warning (Bereich noch nicht migriert)
+    // 2. Kein '/' → basename-Lookup im aktuellen Bereich
+    let targetArea = area;
+    let targetPath = norm;
+    let isCrossAreaUnknown = false;
+    if (norm.includes('/')) {
+      const segs = norm.split('/');
+      const firstLc = segs[0].toLowerCase();
+      const localSubs = filesByArea[area]?.subDirs || new Set();
+      if (knownAreas.has(firstLc)) {
+        targetArea = firstLc;
+        targetPath = segs.slice(1).join('/');
+      } else if (localSubs.has(firstLc)) {
+        // intra-area Sub-Dir-Pfad — case-insensitiv erstes Segment normalisieren auf gefundenen Sub-Dir
+        // (Filesystem-case bewahren: wir nutzen den exakten subPath-Match unten)
+        targetArea = area;
+        targetPath = norm;
+      } else {
+        // unbekannter Bereich → cross-area-warning
+        targetArea = firstLc;
+        isCrossAreaUnknown = true;
       }
+    }
+    // letzten _MOC-Suffix nochmal absichern (z.B. "AI-Shifts/_MOC" → area=ai-shifts, targetPath="_moc")
+    if (/_MOC$/i.test(targetPath)) targetPath = targetPath.replace(/_MOC$/i, '_moc');
+
+    if (isCrossAreaUnknown) {
+      warnings.push({ file: relP, rule: 'cross-area-link', msg: `Wikilink '[[${link}]]' → Bereich '${targetArea}' noch nicht im Vault (expected: target not yet migrated)` });
+      continue;
+    }
+    if (knownAreas.has(targetArea)) {
+      const areaData = filesByArea[targetArea];
+      // Direkter Pfad-Match
+      if (areaData.paths.has(targetPath)) continue;
+      // Case-insensitiver Pfad-Match (für Sub-Dir-Casing-Unterschiede)
+      const lcMatch = [...areaData.paths].find(p => p.toLowerCase() === targetPath.toLowerCase());
+      if (lcMatch) continue;
+      // Basename-Match (Wikilink ohne Sub-Dir-Pfad) im current/target area
+      if (!targetPath.includes('/')) {
+        const matches = areaData.byBase.get(targetPath) || [];
+        if (matches.length === 1) continue;
+        if (matches.length > 1) {
+          warnings.push({ file: relP, rule: 'ambiguous-link', msg: `Wikilink '[[${link}]]' matcht mehrere Files in '${targetArea}': ${matches.join(', ')}` });
+          continue;
+        }
+        // Obsidian-Style: basename-only Link kann in jeder beliebigen Area liegen
+        // Suche in allen anderen Areas
+        const crossMatches = [];
+        for (const a of knownAreas) {
+          if (a === targetArea) continue;
+          const m = filesByArea[a].byBase.get(targetPath) || [];
+          for (const p of m) crossMatches.push(`${a}/${p}`);
+        }
+        if (crossMatches.length === 1) continue; // Obsidian-style auto-resolve, silent ok
+        if (crossMatches.length > 1) {
+          warnings.push({ file: relP, rule: 'ambiguous-link', msg: `Wikilink '[[${link}]]' matcht mehrere Files areas-übergreifend: ${crossMatches.join(', ')}` });
+          continue;
+        }
+      }
+      // Nichts gefunden
+      // Bei basename-only Links (kein Pfad-Prefix) downgrade zu Warning,
+      // weil das Ziel vielleicht in einem noch nicht migrierten Bereich liegt.
+      if (!targetPath.includes('/')) {
+        warnings.push({ file: relP, rule: 'cross-area-link', msg: `Wikilink '[[${link}]]' → Ziel nicht gefunden, evtl. in noch nicht migriertem Bereich (oder Tippfehler — Audit prüfen)` });
+        continue;
+      }
+      errors.push({ file: relP, rule: 'broken-link', msg: `Wikilink '[[${link}]]' → Ziel nicht gefunden in Bereich '${targetArea}'` });
     } else {
-      // Cross-area Link: Ziel-Bereich noch nicht migriert
       warnings.push({ file: relP, rule: 'cross-area-link', msg: `Wikilink '[[${link}]]' → Bereich '${targetArea}' noch nicht im Vault (expected: target not yet migrated)` });
     }
   }
@@ -239,7 +303,7 @@ lines.push('');
 lines.push(`- Bereiche im Vault: ${knownAreas.size} (${[...knownAreas].join(', ')})`);
 lines.push(`- Files pro Bereich:`);
 for (const area of [...knownAreas].sort()) {
-  lines.push(`  - \`${area}\`: ${filesByArea[area].size}`);
+  lines.push(`  - \`${area}\`: ${filesByArea[area].paths.size}`);
 }
 
 fs.mkdirSync(path.dirname(REPORT_PATH), { recursive: true });

@@ -42,12 +42,16 @@ for (const file of allFiles) {
   }
 
   byArea[area] = byArea[area] || { moc: null, items: [] };
-  if (basename === '_moc.md') {
+  // Sub-Dir-Pfad innerhalb des Bereichs (leer wenn Top-Level)
+  const subPath = parts.slice(1, parts.length - 1).join('/');
+
+  if (basename === '_moc.md' && subPath === '') {
     byArea[area].moc = { path: relPath, fm };
   } else {
     byArea[area].items.push({
       path: relPath,
       basename,
+      subPath,
       title: fm.title || basename.replace(/\.md$/, ''),
       type: fm.type || '-',
       status: fm.status || '-',
@@ -78,11 +82,25 @@ for (const area of areaNames) {
   lines.push('');
 
   if (data.items.length > 0) {
-    lines.push('| Title | Type | Status | Updated |');
-    lines.push('|---|---|---|---|');
-    const sorted = [...data.items].sort((a, b) => a.basename.localeCompare(b.basename));
+    const hasSubDirs = data.items.some(i => i.subPath);
+    if (hasSubDirs) {
+      lines.push('| Pfad | Title | Type | Status | Updated |');
+      lines.push('|---|---|---|---|---|');
+    } else {
+      lines.push('| Title | Type | Status | Updated |');
+      lines.push('|---|---|---|---|');
+    }
+    const sorted = [...data.items].sort((a, b) => {
+      if (a.subPath !== b.subPath) return a.subPath.localeCompare(b.subPath);
+      return a.basename.localeCompare(b.basename);
+    });
     for (const item of sorted) {
-      lines.push(`| [${item.title}](./${item.path}) | \`${item.type}\` | \`${item.status}\` | ${item.updated} |`);
+      const pathCol = item.subPath ? `\`${item.subPath}/\`` : '`./`';
+      if (hasSubDirs) {
+        lines.push(`| ${pathCol} | [${item.title}](./${item.path}) | \`${item.type}\` | \`${item.status}\` | ${item.updated} |`);
+      } else {
+        lines.push(`| [${item.title}](./${item.path}) | \`${item.type}\` | \`${item.status}\` | ${item.updated} |`);
+      }
     }
     lines.push('');
   }
