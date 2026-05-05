@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm run lint)",
+      "Bash(npm run lint:quick)",
+      "Bash(npm run index)",
+      "Bash(npm run prepare-commit)",
+      "Bash(npm run migrate:*)",
+      "Bash(node scripts/lint.mjs:*)",
+      "Bash(node scripts/build-index.mjs)",
+      "Bash(node scripts/migrate-area.mjs:*)",
+      "Bash(git status)",
+      "Bash(git status:*)",
+      "Bash(git diff)",
+      "Bash(git diff:*)",
+      "Bash(git log)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git init)",
+      "mcp__brainsidian__read_note",
+      "mcp__brainsidian__list_directory",
+      "mcp__brainsidian__get_frontmatter"
+    ],
+    "deny": [
+      "Bash(git push:*)",
+      "Bash(git remote add:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(rm -rf:*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/lint.mjs\" --quick",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

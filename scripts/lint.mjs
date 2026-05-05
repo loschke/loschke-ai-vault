@@ -1,0 +1,251 @@
+#!/usr/bin/env node
+// Schema-Lint für loschke-vault.
+// Usage:
+//   node scripts/lint.mjs              # full lint, schreibt Report
+//   node scripts/lint.mjs --quick      # nur intra-area Errors, kein Report
+//
+// Exit 0 wenn 0 Errors, sonst 1.
+
+import fs from 'node:fs';
+import path from 'node:path';
+import matter from 'gray-matter';
+
+const REPO_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\//, '')), '..');
+const KNOWLEDGE_DIR = path.join(REPO_ROOT, 'knowledge');
+const REPORT_PATH = path.join(REPO_ROOT, '_meta', 'lint-report.md');
+
+const isQuick = process.argv.includes('--quick');
+
+const ALLOWED_TYPES = new Set([
+  'framework', 'concept', 'method', 'reference', 'vocabulary',
+  'guide', 'brand-guide', 'voice-reference', 'skill-doc', 'moc'
+]);
+const ALLOWED_STATUS = new Set(['draft', 'stable', 'living', 'archived']);
+const REQUIRED_FIELDS = ['title', 'type', 'status', 'created', 'updated', 'tags', 'sources'];
+const SOURCE_PATTERN = /^[a-z][a-z0-9-]*:[^\s]+/;
+const DRIFT_MONTHS = 6;
+
+const errors = [];
+const warnings = [];
+
+function walkMd(dir, acc = []) {
+  if (!fs.existsSync(dir)) return acc;
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) walkMd(full, acc);
+    else if (entry.isFile() && entry.name.endsWith('.md')) acc.push(full);
+  }
+  return acc;
+}
+
+function rel(p) {
+  return path.relative(REPO_ROOT, p).replace(/\\/g, '/');
+}
+
+const allFiles = walkMd(KNOWLEDGE_DIR);
+const indexAndLog = new Set([
+  path.join(KNOWLEDGE_DIR, 'index.md'),
+  path.join(KNOWLEDGE_DIR, 'log.md')
+]);
+const knowledgeFiles = allFiles.filter(f => !indexAndLog.has(f));
+
+// Sammle alle Filenames pro Bereich für Wikilink-Auflösung
+const filesByArea = {}; // areaName -> Set<basename without .md>
+const allBasenames = new Set();
+for (const f of knowledgeFiles) {
+  const relP = rel(f);
+  const parts = relP.split('/'); // knowledge/<area>/<file>.md
+  if (parts.length < 3) continue;
+  const area = parts[1];
+  const base = parts[parts.length - 1].replace(/\.md$/, '');
+  filesByArea[area] = filesByArea[area] || new Set();
+  filesByArea[area].add(base);
+  allBasenames.add(base);
+}
+const knownAreas = new Set(Object.keys(filesByArea));
+
+// Regel 4: _moc.md pro Bereich
+for (const area of knownAreas) {
+  if (!filesByArea[area].has('_moc')) {
+    errors.push({ file: `knowledge/${area}/`, rule: 'moc-missing', msg: `Bereich '${area}' hat keine _moc.md` });
+  }
+}
+
+const today = new Date('2026-05-04'); // Migration date; could be dynamic, but stable for run reproducibility
+
+function monthsSince(isoDate) {
+  if (!isoDate) return Infinity;
+  const d = new Date(isoDate);
+  if (isNaN(d.getTime())) return Infinity;
+  return (today - d) / (1000 * 60 * 60 * 24 * 30.44);
+}
+
+function checkSourceFormat(s) {
+  return SOURCE_PATTERN.test(s);
+}
+
+function extractWikilinks(body) {
+  const re = /\[\[([^\]]+)\]\]/g;
+  const links = [];
+  let m;
+  while ((m = re.exec(body)) !== null) {
+    const raw = m[1].split('|')[0].trim();
+    links.push(raw);
+  }
+  return links;
+}
+
+for (const file of knowledgeFiles) {
+  const relP = rel(file);
+  const parts = relP.split('/');
+  const area = parts[1];
+  let parsed;
+  try {
+    parsed = matter(fs.readFileSync(file, 'utf8'));
+  } catch (e) {
+    errors.push({ file: relP, rule: 'parse', msg: `Frontmatter parse error: ${e.message}` });
+    continue;
+  }
+  const fm = parsed.data || {};
+
+  // Regel 1: Pflicht-Frontmatter
+  for (const f of REQUIRED_FIELDS) {
+    if (fm[f] === undefined || fm[f] === null || (Array.isArray(fm[f]) && fm[f].length === 0 && f !== 'sources')) {
+      errors.push({ file: relP, rule: 'required-field', msg: `Pflichtfeld '${f}' fehlt oder leer` });
+    }
+  }
+
+  // Regel 2: sources nicht leer
+  if (!Array.isArray(fm.sources) || fm.sources.length === 0) {
+    errors.push({ file: relP, rule: 'sources-empty', msg: `'sources' muss Array mit min. 1 Eintrag sein` });
+  }
+
+  // Regel 4: type/status aus Werte-Liste
+  if (fm.type && !ALLOWED_TYPES.has(fm.type)) {
+    errors.push({ file: relP, rule: 'invalid-type', msg: `'type: ${fm.type}' nicht in erlaubter Liste` });
+  }
+  if (fm.status && !ALLOWED_STATUS.has(fm.status)) {
+    errors.push({ file: relP, rule: 'invalid-status', msg: `'status: ${fm.status}' nicht in erlaubter Liste` });
+  }
+
+  // Regel 7 (Warning): sources Format
+  if (Array.isArray(fm.sources)) {
+    for (const s of fm.sources) {
+      if (typeof s !== 'string' || !checkSourceFormat(s)) {
+        warnings.push({ file: relP, rule: 'sources-format', msg: `Source '${s}' folgt nicht der Doppelpunkt-Notation` });
+      }
+    }
+  }
+
+  // Regel 6 (Warning): Drift-Lint
+  if (fm.last_reviewed) {
+    const months = monthsSince(fm.last_reviewed);
+    if (months > DRIFT_MONTHS) {
+      warnings.push({ file: relP, rule: 'drift', msg: `last_reviewed (${fm.last_reviewed}) älter als ${DRIFT_MONTHS} Monate` });
+    }
+  }
+
+  // Regel 3 (Wikilinks)
+  const links = extractWikilinks(parsed.content);
+  for (const link of links) {
+    // Intra-file anchor link (Obsidian: [[#Heading]]) → ignorieren
+    if (link.startsWith('#')) continue;
+    // Trailing Backslash (Markdown-Escape im Source) entfernen
+    const stripped = link.replace(/\\+$/, '').trim();
+    // Format: "Filename" oder "area/Filename" oder "area/_MOC"
+    const cleaned = stripped.replace(/\.md$/, '').replace(/#.*$/, ''); // strip anchor on file links
+    if (!cleaned) continue;
+    let targetArea = area;
+    let targetBase = cleaned;
+    if (cleaned.includes('/')) {
+      const segs = cleaned.split('/');
+      targetArea = segs[0].toLowerCase();
+      targetBase = segs[segs.length - 1];
+    }
+    // Normalize MOC casing
+    const targetBaseNorm = targetBase === '_MOC' ? '_moc' : targetBase;
+
+    if (knownAreas.has(targetArea)) {
+      const set = filesByArea[targetArea];
+      if (!set.has(targetBaseNorm)) {
+        errors.push({ file: relP, rule: 'broken-link', msg: `Wikilink '[[${link}]]' → Ziel nicht gefunden in Bereich '${targetArea}'` });
+      }
+    } else {
+      // Cross-area Link: Ziel-Bereich noch nicht migriert
+      warnings.push({ file: relP, rule: 'cross-area-link', msg: `Wikilink '[[${link}]]' → Bereich '${targetArea}' noch nicht im Vault (expected: target not yet migrated)` });
+    }
+  }
+}
+
+// Output
+const errCount = errors.length;
+const warnCount = warnings.length;
+
+if (isQuick) {
+  // Quick mode: nur stdout, kein File-Write, nur Errors zählen
+  if (errCount === 0) {
+    console.log(`✓ lint:quick ok (${knowledgeFiles.length} files, ${warnCount} warnings)`);
+  } else {
+    console.error(`✗ lint:quick: ${errCount} errors`);
+    for (const e of errors.slice(0, 10)) {
+      console.error(`  ${e.file}: [${e.rule}] ${e.msg}`);
+    }
+    if (errCount > 10) console.error(`  ... und ${errCount - 10} weitere`);
+  }
+  process.exit(errCount === 0 ? 0 : 1);
+}
+
+// Full report
+const lines = [];
+lines.push(`# Lint Report — ${new Date().toISOString().slice(0, 10)}`);
+lines.push('');
+lines.push(`**Files geprüft:** ${knowledgeFiles.length}`);
+lines.push(`**Errors:** ${errCount}`);
+lines.push(`**Warnings:** ${warnCount}`);
+lines.push('');
+lines.push('## Errors');
+lines.push('');
+if (errCount === 0) {
+  lines.push('_Keine._');
+} else {
+  for (const e of errors) {
+    lines.push(`- \`${e.file}\` — **${e.rule}**: ${e.msg}`);
+  }
+}
+lines.push('');
+lines.push('## Warnings');
+lines.push('');
+if (warnCount === 0) {
+  lines.push('_Keine._');
+} else {
+  // Gruppieren nach rule
+  const byRule = {};
+  for (const w of warnings) {
+    byRule[w.rule] = byRule[w.rule] || [];
+    byRule[w.rule].push(w);
+  }
+  for (const rule of Object.keys(byRule).sort()) {
+    lines.push(`### ${rule} (${byRule[rule].length})`);
+    lines.push('');
+    for (const w of byRule[rule]) {
+      lines.push(`- \`${w.file}\`: ${w.msg}`);
+    }
+    lines.push('');
+  }
+}
+lines.push('');
+lines.push('## Summary');
+lines.push('');
+lines.push(`- Bereiche im Vault: ${knownAreas.size} (${[...knownAreas].join(', ')})`);
+lines.push(`- Files pro Bereich:`);
+for (const area of [...knownAreas].sort()) {
+  lines.push(`  - \`${area}\`: ${filesByArea[area].size}`);
+}
+
+fs.mkdirSync(path.dirname(REPORT_PATH), { recursive: true });
+fs.writeFileSync(REPORT_PATH, lines.join('\n') + '\n', 'utf8');
+
+console.log(`Lint complete: ${errCount} errors, ${warnCount} warnings`);
+console.log(`Report: ${rel(REPORT_PATH)}`);
+
+process.exit(errCount === 0 ? 0 : 1);

@@ -1,0 +1,20 @@
+{
+  "name": "loschke-vault",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Public knowledge base and asset library for Rico Loschke / sevenX",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "lint": "node scripts/lint.mjs",
+    "lint:quick": "node scripts/lint.mjs --quick",
+    "index": "node scripts/build-index.mjs",
+    "migrate": "node scripts/migrate-area.mjs",
+    "prepare-commit": "npm run lint && npm run index"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3"
+  }
+}
