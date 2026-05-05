@@ -1,0 +1,56 @@
+{
+  "area": "ai-shifts",
+  "source_path": "02_KNOWLEDGE/AI-Shifts",
+  "target_path": "knowledge/ai-shifts",
+  "migration_date": "2026-05-05",
+  "constants": {
+    "area": "ai-shifts",
+    "brand_fit": ["loschke", "unlearn", "lernen"],
+    "last_reviewed": "2026-05-05"
+  },
+  "moc_defaults": {
+    "title": "AI-Shifts",
+    "type": "moc",
+    "status": "living",
+    "tags": ["moc", "ai-shifts"],
+    "audience": ["fuehrungskraft", "konzepter", "praktiker"],
+    "level": "intermediate",
+    "intent": ["verstehen", "einordnen"],
+    "contains": ["concept", "framework", "argument"]
+  },
+  "_notes": "Filename-Normalisierung: 'Was kommt nach der Intelligenz - Kontext v2.md' → 'Was-kommt-nach-der-Intelligenz-Kontext-v2.md'. Hyperpersonalisierung hat eigenen _moc.md Sub-Dir-MOC.",
+  "files": [
+    { "source": "_MOC.md", "target": "_moc.md", "type": "moc", "status": "living", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Was kommt nach der Intelligenz - Kontext v2.md", "target": "Was-kommt-nach-der-Intelligenz-Kontext-v2.md", "type": "concept", "status": "living", "sources": ["self-authored:loschke:trend-research"] },
+
+    { "source": "Content-Shifts/Follow-schlaegt-Search.md", "target": "Content-Shifts/Follow-schlaegt-Search.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+
+    { "source": "Hyperpersonalisierung/_MOC.md", "target": "Hyperpersonalisierung/_moc.md", "type": "moc", "status": "living", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Hyperpersonalisierung/ICD-Framework.md", "target": "Hyperpersonalisierung/ICD-Framework.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Hyperpersonalisierung/Implementierung.md", "target": "Hyperpersonalisierung/Implementierung.md", "type": "guide", "status": "living", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Hyperpersonalisierung/Layer-1-Constraints.md", "target": "Hyperpersonalisierung/Layer-1-Constraints.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Hyperpersonalisierung/Layer-2-Intent.md", "target": "Hyperpersonalisierung/Layer-2-Intent.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Hyperpersonalisierung/Layer-3-Context.md", "target": "Hyperpersonalisierung/Layer-3-Context.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Hyperpersonalisierung/Use-Cases.md", "target": "Hyperpersonalisierung/Use-Cases.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:trend-research"] },
+
+    { "source": "Kognitive-Effekte/Boiling-Frog-Effect.md", "target": "Kognitive-Effekte/Boiling-Frog-Effect.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Kognitive-Effekte/Cognitive-Debt.md", "target": "Kognitive-Effekte/Cognitive-Debt.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+
+    { "source": "Kompetenz-Shifts/4-Powers.md", "target": "Kompetenz-Shifts/4-Powers.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Kompetenz-Shifts/Comb-Shaped-Professional.md", "target": "Kompetenz-Shifts/Comb-Shaped-Professional.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Kompetenz-Shifts/Context-Engineering.md", "target": "Kompetenz-Shifts/Context-Engineering.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Kompetenz-Shifts/KI-Skills-Map.md", "target": "Kompetenz-Shifts/KI-Skills-Map.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Kompetenz-Shifts/Skills-Eigenschaften-KI-Zeitalter.md", "target": "Kompetenz-Shifts/Skills-Eigenschaften-KI-Zeitalter.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Kompetenz-Shifts/Skills-Shift-Perspektive.md", "target": "Kompetenz-Shifts/Skills-Shift-Perspektive.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Kompetenz-Shifts/Skills-als-Produkt.md", "target": "Kompetenz-Shifts/Skills-als-Produkt.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Kompetenz-Shifts/Strategische-Subtraktion.md", "target": "Kompetenz-Shifts/Strategische-Subtraktion.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+
+    { "source": "Markt-Oekonomie/AGEI.md", "target": "Markt-Oekonomie/AGEI.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+
+    { "source": "Rollen-Arbeitsweisen/Apprenticeship-Bottleneck.md", "target": "Rollen-Arbeitsweisen/Apprenticeship-Bottleneck.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Rollen-Arbeitsweisen/Kurator-statt-Creator.md", "target": "Rollen-Arbeitsweisen/Kurator-statt-Creator.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Rollen-Arbeitsweisen/Rollentransformation-KI-Aera.md", "target": "Rollen-Arbeitsweisen/Rollentransformation-KI-Aera.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Rollen-Arbeitsweisen/Solution-First.md", "target": "Rollen-Arbeitsweisen/Solution-First.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] },
+    { "source": "Rollen-Arbeitsweisen/Upstream-Downstream-Spezialisierung.md", "target": "Rollen-Arbeitsweisen/Upstream-Downstream-Spezialisierung.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:trend-research"] }
+  ]
+}

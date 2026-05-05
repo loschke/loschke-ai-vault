@@ -234,6 +234,15 @@ for (const file of knowledgeFiles) {
         warnings.push({ file: relP, rule: 'cross-area-link', msg: `Wikilink '[[${link}]]' → Ziel nicht gefunden, evtl. in noch nicht migriertem Bereich (oder Tippfehler — Audit prüfen)` });
         continue;
       }
+      // Sub-Dir-MOC-Lücke: wenn Ziel-Pfad auf _moc/_MOC endet und Sub-Dir existiert, downgrade zu Warning
+      // (Sub-Dir-MOCs sind im Schema optional)
+      if (/(^|\/)_moc$/i.test(targetPath)) {
+        const subDirOfTarget = targetPath.replace(/(^|\/)_moc$/i, '').toLowerCase();
+        if (subDirOfTarget && filesByArea[targetArea].subDirs.has(subDirOfTarget)) {
+          warnings.push({ file: relP, rule: 'sub-moc-missing', msg: `Wikilink '[[${link}]]' → Sub-Dir-MOC existiert nicht (Sub-Dirs brauchen kein eigenes _moc, optional)` });
+          continue;
+        }
+      }
       errors.push({ file: relP, rule: 'broken-link', msg: `Wikilink '[[${link}]]' → Ziel nicht gefunden in Bereich '${targetArea}'` });
     } else {
       warnings.push({ file: relP, rule: 'cross-area-link', msg: `Wikilink '[[${link}]]' → Bereich '${targetArea}' noch nicht im Vault (expected: target not yet migrated)` });
