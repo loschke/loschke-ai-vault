@@ -1,0 +1,29 @@
+{
+  "area": "ai-coding",
+  "source_path": "02_KNOWLEDGE/AI-Coding",
+  "target_path": "knowledge/ai-coding",
+  "migration_date": "2026-05-05",
+  "constants": {
+    "area": "ai-coding",
+    "brand_fit": ["loschke", "unlearn", "lernen"],
+    "last_reviewed": "2026-05-05"
+  },
+  "moc_defaults": {
+    "title": "AI-Coding",
+    "type": "moc",
+    "status": "living",
+    "tags": ["ai-coding", "moc"],
+    "audience": ["entwickler", "technisch", "praktiker", "konzepter"],
+    "level": "basic-to-advanced",
+    "intent": ["verstehen", "anwenden"],
+    "contains": ["framework", "method", "example"]
+  },
+  "_filename_normalizations": "Source-Filenames mit Leerzeichen, Em-Dash, Umlauten verletzen das ASCII-Bindestrich-Schema. Targets sind normalisiert. MOC-Wikilinks werden post-migration im Body angepasst (siehe migration-log).",
+  "files": [
+    { "source": "_MOC.md", "target": "_moc.md", "type": "moc", "status": "living", "sources": ["self-authored:loschke:ai-coding-experience"] },
+    { "source": "AI-Coding Workflow Best Practices.md", "target": "AI-Coding-Workflow-Best-Practices.md", "type": "method", "status": "stable", "sources": ["self-authored:loschke:ai-coding-experience"] },
+    { "source": "Context Engineering – Die 6 Bausteine.md", "target": "Context-Engineering-Die-6-Bausteine.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:ai-coding-experience"] },
+    { "source": "UI-Prompt-Bibliothek.md", "target": "UI-Prompt-Bibliothek.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:ai-coding-experience"] },
+    { "source": "UI-Prompting für Design-Agents.md", "target": "UI-Prompting-fuer-Design-Agents.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:ai-coding-experience"] }
+  ]
+}
