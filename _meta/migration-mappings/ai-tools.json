@@ -1,0 +1,25 @@
+{
+  "area": "ai-tools",
+  "source_path": "02_KNOWLEDGE/AI-Tools",
+  "target_path": "knowledge/ai-tools",
+  "migration_date": "2026-05-05",
+  "constants": {
+    "area": "ai-tools",
+    "brand_fit": ["loschke", "unlearn", "lernen"],
+    "last_reviewed": "2026-05-05"
+  },
+  "moc_defaults": {
+    "title": "AI-Tools",
+    "type": "moc",
+    "status": "living",
+    "tags": ["ai-tools", "moc"],
+    "audience": ["praktiker", "entscheider", "konzepter"],
+    "level": "basic-to-advanced",
+    "intent": ["einordnen", "bewerten", "entscheiden"],
+    "contains": ["decision-aid", "vocabulary"]
+  },
+  "files": [
+    { "source": "_MOC.md", "target": "_moc.md", "type": "moc", "status": "living", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "Chat-Assistenten-Architektur-Enterprise.md", "target": "Chat-Assistenten-Architektur-Enterprise.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:pre-migration"] }
+  ]
+}
