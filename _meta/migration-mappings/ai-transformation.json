@@ -1,0 +1,49 @@
+{
+  "area": "ai-transformation",
+  "source_path": "02_KNOWLEDGE/AI-Transformation",
+  "target_path": "knowledge/ai-transformation",
+  "migration_date": "2026-05-05",
+  "constants": {
+    "area": "ai-transformation",
+    "brand_fit": ["loschke", "unlearn", "lernen"],
+    "last_reviewed": "2026-05-05"
+  },
+  "moc_defaults": {
+    "title": "AI-Transformation",
+    "type": "moc",
+    "status": "living",
+    "tags": ["moc", "ai-transformation"],
+    "audience": ["fuehrungskraft", "entscheider", "konzepter", "praktiker"],
+    "level": "intermediate",
+    "intent": ["verstehen", "anwenden", "vermitteln"],
+    "contains": ["framework", "method"]
+  },
+  "_notes": "HBR-Last-Mile basiert auf HBR-Artikel, hier als self-authored Aufbereitung markiert. Klassische Frameworks (ADKAR, Kotter, Adoption-Curve, 70-20-10) sind etablierte Modelle, von Loschke aufbereitet — Source-Verfeinerung in Audit-Phase.",
+  "files": [
+    { "source": "_MOC.md", "target": "_moc.md", "type": "moc", "status": "living", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Externe-Datenpunkte.md", "target": "Externe-Datenpunkte.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "HBR-Last-Mile-Problem-KI-Transformation.md", "target": "HBR-Last-Mile-Problem-KI-Transformation.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Skills-Transformation-Perspektive.md", "target": "Skills-Transformation-Perspektive.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+
+    { "source": "Change-Frameworks/70-20-10-Lernmodell.md", "target": "Change-Frameworks/70-20-10-Lernmodell.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Change-Frameworks/ADKAR-Framework.md", "target": "Change-Frameworks/ADKAR-Framework.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Change-Frameworks/Adoption-Curve.md", "target": "Change-Frameworks/Adoption-Curve.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Change-Frameworks/Kotter-8-Steps.md", "target": "Change-Frameworks/Kotter-8-Steps.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Change-Frameworks/Psychological-Safety.md", "target": "Change-Frameworks/Psychological-Safety.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+
+    { "source": "Praxis-Frameworks/Drei-Hebel-Modell.md", "target": "Praxis-Frameworks/Drei-Hebel-Modell.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Praxis-Frameworks/Drei-kulturelle-Barrieren.md", "target": "Praxis-Frameworks/Drei-kulturelle-Barrieren.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Praxis-Frameworks/KI-Verhaltenstypen.md", "target": "Praxis-Frameworks/KI-Verhaltenstypen.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Praxis-Frameworks/Mensch-KI-Kollaborationsprozesse.md", "target": "Praxis-Frameworks/Mensch-KI-Kollaborationsprozesse.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Praxis-Frameworks/Transformation-Praxis-Erkenntnisse.md", "target": "Praxis-Frameworks/Transformation-Praxis-Erkenntnisse.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:transformation-consulting"] },
+
+    { "source": "Risiken-Spannungsfelder/Deskilling-Gefahr.md", "target": "Risiken-Spannungsfelder/Deskilling-Gefahr.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Risiken-Spannungsfelder/Innovationskultur-DACH.md", "target": "Risiken-Spannungsfelder/Innovationskultur-DACH.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Risiken-Spannungsfelder/Junior-Dilemma.md", "target": "Risiken-Spannungsfelder/Junior-Dilemma.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Risiken-Spannungsfelder/Regression-zur-Mitte.md", "target": "Risiken-Spannungsfelder/Regression-zur-Mitte.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+
+    { "source": "Tools-Methoden/KI-Readiness-Check.md", "target": "Tools-Methoden/KI-Readiness-Check.md", "type": "method", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Tools-Methoden/KI-Use-Cases-Methodik.md", "target": "Tools-Methoden/KI-Use-Cases-Methodik.md", "type": "method", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] },
+    { "source": "Tools-Methoden/_Cheatsheet-Lerntheorie.md", "target": "Tools-Methoden/_Cheatsheet-Lerntheorie.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:transformation-consulting"] }
+  ]
+}
