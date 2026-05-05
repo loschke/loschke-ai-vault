@@ -1,0 +1,56 @@
+{
+  "area": "ai-strategy",
+  "source_path": "02_KNOWLEDGE/AI-Strategy",
+  "target_path": "knowledge/ai-strategy",
+  "migration_date": "2026-05-05",
+  "constants": {
+    "area": "ai-strategy",
+    "brand_fit": ["loschke", "unlearn", "lernen"],
+    "last_reviewed": "2026-05-05"
+  },
+  "moc_defaults": {
+    "title": "AI-Strategy",
+    "type": "moc",
+    "status": "living",
+    "tags": ["moc", "ai-strategy"],
+    "audience": ["fuehrungskraft", "entscheider", "konzepter"],
+    "level": "intermediate",
+    "intent": ["entscheiden", "einordnen"],
+    "contains": ["framework", "decision-aid"]
+  },
+  "_notes": "Filename-Normalisierung: 'UX Reasoning.md' → 'UX-Reasoning.md' (Schema). Sub-Dir LLM-Enterprise hat eigenen _moc.md (optional, nicht erzwungen). Sub-Dir Governance hat keinen MOC.",
+  "files": [
+    { "source": "_MOC.md", "target": "_moc.md", "type": "moc", "status": "living", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Drei-Gaps-Modell.md", "target": "Drei-Gaps-Modell.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Dringlichkeits-Assessment.md", "target": "Dringlichkeits-Assessment.md", "type": "method", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "KI-UseCases-Fachbereiche.md", "target": "KI-UseCases-Fachbereiche.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "UX Reasoning.md", "target": "UX-Reasoning.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+
+    { "source": "Governance/Adaptive-Governance-Modelle.md", "target": "Governance/Adaptive-Governance-Modelle.md", "type": "framework", "status": "living", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Anonymisierung-Toolstack.md", "target": "Governance/Anonymisierung-Toolstack.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Anonymisierung-vs-Pseudonymisierung.md", "target": "Governance/Anonymisierung-vs-Pseudonymisierung.md", "type": "vocabulary", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Anonymisierungstechniken.md", "target": "Governance/Anonymisierungstechniken.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Deepfakes-Rechtslage.md", "target": "Governance/Deepfakes-Rechtslage.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/EU-AI-Act-Ueberblick.md", "target": "Governance/EU-AI-Act-Ueberblick.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Ethische-Prinzipien-KI.md", "target": "Governance/Ethische-Prinzipien-KI.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/KI-Output-Haftung-Risiken.md", "target": "Governance/KI-Output-Haftung-Risiken.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/KI-Tool-Lizenzen-Vergleich.md", "target": "Governance/KI-Tool-Lizenzen-Vergleich.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/KI-Urteile-Referenz.md", "target": "Governance/KI-Urteile-Referenz.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Markenrecht-KI-Bilder.md", "target": "Governance/Markenrecht-KI-Bilder.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Persoenlichkeitsrecht-KI-Bilder.md", "target": "Governance/Persoenlichkeitsrecht-KI-Bilder.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Personenbezogene-Daten-Taxonomie.md", "target": "Governance/Personenbezogene-Daten-Taxonomie.md", "type": "vocabulary", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Provider-Falle.md", "target": "Governance/Provider-Falle.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Re-Identifikation-Risiken.md", "target": "Governance/Re-Identifikation-Risiken.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Risikobewertung-KI-Bilder.md", "target": "Governance/Risikobewertung-KI-Bilder.md", "type": "method", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Selbstoptimierende-Prozesse.md", "target": "Governance/Selbstoptimierende-Prozesse.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/TDM-Ausnahmen-KI-Training.md", "target": "Governance/TDM-Ausnahmen-KI-Training.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Urheberrecht-KI-Inhalte.md", "target": "Governance/Urheberrecht-KI-Inhalte.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "Governance/Zwei-Saeulen-Governance.md", "target": "Governance/Zwei-Saeulen-Governance.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+
+    { "source": "LLM-Enterprise/_MOC.md", "target": "LLM-Enterprise/_moc.md", "type": "moc", "status": "living", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "LLM-Enterprise/LLM-Infrastruktur-Optionen.md", "target": "LLM-Enterprise/LLM-Infrastruktur-Optionen.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "LLM-Enterprise/LLM-Rechtlicher-Rahmen.md", "target": "LLM-Enterprise/LLM-Rechtlicher-Rahmen.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "LLM-Enterprise/LLM-Use-Cases-Matching.md", "target": "LLM-Enterprise/LLM-Use-Cases-Matching.md", "type": "method", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] },
+    { "source": "LLM-Enterprise/Open-Weights-Threat-Model.md", "target": "LLM-Enterprise/Open-Weights-Threat-Model.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:strategy-consulting"] }
+  ]
+}
