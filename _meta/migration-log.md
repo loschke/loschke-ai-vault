@@ -22,3 +22,16 @@ Chronologisch, append-only. Zeigt was wann von wo nach wo migriert wurde.
 - [2026-05-04] ai-essentials/Prompt-Engineering-Grundlagen.md ← 02_KNOWLEDGE/AI-Essentials/Prompt-Engineering-Grundlagen.md
 - [2026-05-04] ai-essentials/RAG.md ← 02_KNOWLEDGE/AI-Essentials/RAG.md
 - [2026-05-04] ai-essentials/Wie-LLMs-funktionieren.md ← 02_KNOWLEDGE/AI-Essentials/Wie-LLMs-funktionieren.md
+
+## 2026-05-05 — migrate ai-tools (2 files)
+
+- [2026-05-05] ai-tools/_moc.md ← 02_KNOWLEDGE/AI-Tools/_MOC.md
+- [2026-05-05] ai-tools/Chat-Assistenten-Architektur-Enterprise.md ← 02_KNOWLEDGE/AI-Tools/Chat-Assistenten-Architektur-Enterprise.md
+
+## 2026-05-05 — migrate ai-coding (5 files)
+
+- [2026-05-05] ai-coding/_moc.md ← 02_KNOWLEDGE/AI-Coding/_MOC.md
+- [2026-05-05] ai-coding/AI-Coding-Workflow-Best-Practices.md ← 02_KNOWLEDGE/AI-Coding/AI-Coding Workflow Best Practices.md
+- [2026-05-05] ai-coding/Context-Engineering-Die-6-Bausteine.md ← 02_KNOWLEDGE/AI-Coding/Context Engineering – Die 6 Bausteine.md
+- [2026-05-05] ai-coding/UI-Prompt-Bibliothek.md ← 02_KNOWLEDGE/AI-Coding/UI-Prompt-Bibliothek.md
+- [2026-05-05] ai-coding/UI-Prompting-fuer-Design-Agents.md ← 02_KNOWLEDGE/AI-Coding/UI-Prompting für Design-Agents.md

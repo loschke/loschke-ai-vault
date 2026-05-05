@@ -1,6 +1,6 @@
 # Lint Report — 2026-05-05
 
-**Files geprüft:** 18
+**Files geprüft:** 25
 **Errors:** 0
 **Warnings:** 9
 
@@ -25,6 +25,8 @@ _Keine._
 
 ## Summary
 
-- Bereiche im Vault: 1 (ai-essentials)
+- Bereiche im Vault: 3 (ai-coding, ai-essentials, ai-tools)
 - Files pro Bereich:
+  - `ai-coding`: 5
   - `ai-essentials`: 18
+  - `ai-tools`: 2

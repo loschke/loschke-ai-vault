@@ -3,7 +3,18 @@
 > Auto-generiert von `scripts/build-index.mjs` am 2026-05-05.
 > Nicht manuell editieren.
 
-**Bereiche:** 1 · **Files:** 18
+**Bereiche:** 3 · **Files:** 25
+
+## ai-coding
+
+MOC: [`_moc.md`](./ai-coding/_moc.md) · 4 Einträge
+
+| Title | Type | Status | Updated |
+|---|---|---|---|
+| [AI Coding Workflow Best Practices](./ai-coding/AI-Coding-Workflow-Best-Practices.md) | `method` | `stable` | Sat Jan 04 2025 01:00:00 GMT+0100 (Mitteleuropäische Normalzeit) |
+| [Context Engineering Die 6 Bausteine](./ai-coding/Context-Engineering-Die-6-Bausteine.md) | `framework` | `stable` | 2025-01-15 |
+| [UI Prompt Bibliothek](./ai-coding/UI-Prompt-Bibliothek.md) | `reference` | `living` | 2026-03-26T00:00:00.000Z |
+| [UI Prompting fuer Design Agents](./ai-coding/UI-Prompting-fuer-Design-Agents.md) | `framework` | `stable` | 2026-03-26T00:00:00.000Z |
 
 ## ai-essentials
 
@@ -29,12 +40,20 @@ MOC: [`_moc.md`](./ai-essentials/_moc.md) · 17 Einträge
 | [RAG – Retrieval Augmented Generation](./ai-essentials/RAG.md) | `concept` | `stable` | 2026-03-03 |
 | [Wie LLMs funktionieren](./ai-essentials/Wie-LLMs-funktionieren.md) | `concept` | `stable` | 2026-03-03 |
 
+## ai-tools
+
+MOC: [`_moc.md`](./ai-tools/_moc.md) · 1 Einträge
+
+| Title | Type | Status | Updated |
+|---|---|---|---|
+| [Chat Assistenten Architektur Enterprise](./ai-tools/Chat-Assistenten-Architektur-Enterprise.md) | `framework` | `stable` | 2026-03-15 |
+
 ---
 
 ## Counts pro `type`
 
-- `reference`: 6
+- `reference`: 7
+- `framework`: 6
 - `concept`: 5
-- `framework`: 3
-- `method`: 2
+- `method`: 3
 - `guide`: 1
