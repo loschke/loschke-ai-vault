@@ -1,0 +1,41 @@
+{
+  "area": "ai-essentials",
+  "source_path": "02_KNOWLEDGE/AI-Essentials",
+  "target_path": "knowledge/ai-essentials",
+  "migration_date": "2026-05-04",
+  "constants": {
+    "area": "ai-essentials",
+    "brand_fit": ["loschke", "unlearn", "lernen"],
+    "last_reviewed": "2026-05-04"
+  },
+  "moc_defaults": {
+    "title": "AI-Essentials",
+    "type": "moc",
+    "status": "living",
+    "tags": ["ki-grundlagen", "moc"],
+    "audience": ["einsteiger", "praktiker", "fuehrungskraft"],
+    "level": "basic",
+    "intent": ["verstehen", "einordnen"],
+    "contains": ["framework", "vocabulary"]
+  },
+  "files": [
+    { "source": "_MOC.md", "target": "_moc.md", "type": "moc", "status": "living", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "Content-Bewertung-Checkliste.md", "target": "Content-Bewertung-Checkliste.md", "type": "method", "status": "stable", "sources": ["self-authored:loschke-and-claude:2026-02"] },
+    { "source": "Context-Engineering-Grundlagen.md", "target": "Context-Engineering-Grundlagen.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "Datenschutz-Input-Regeln.md", "target": "Datenschutz-Input-Regeln.md", "type": "guide", "status": "stable", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "GenAI-Stack-Erklaermodell.md", "target": "GenAI-Stack-Erklaermodell.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:workshop-experience"] },
+    { "source": "Halluzinationen-und-Zuverlaessigkeit.md", "target": "Halluzinationen-und-Zuverlaessigkeit.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "KI-Agents-Grundlagen.md", "target": "KI-Agents-Grundlagen.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "KI-Faehigkeiten-Scope.md", "target": "KI-Faehigkeiten-Scope.md", "type": "reference", "status": "stable", "sources": ["queonext:presentation:2024-2025"] },
+    { "source": "KI-Output-Risiken.md", "target": "KI-Output-Risiken.md", "type": "reference", "status": "stable", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "KI-Regulierung-Governance.md", "target": "KI-Regulierung-Governance.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "KI-Sicherheit-Souveraenitaet.md", "target": "KI-Sicherheit-Souveraenitaet.md", "type": "framework", "status": "stable", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "Kosten-und-Preismodelle.md", "target": "Kosten-und-Preismodelle.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "LLM-Sicherheitsrisiken-OWASP.md", "target": "LLM-Sicherheitsrisiken-OWASP.md", "type": "framework", "status": "living", "sources": ["owasp:top-10-llm:2024"] },
+    { "source": "Modell-Landschaft.md", "target": "Modell-Landschaft.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "Multimodalitaet-Ueberblick.md", "target": "Multimodalitaet-Ueberblick.md", "type": "reference", "status": "living", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "Prompt-Engineering-Grundlagen.md", "target": "Prompt-Engineering-Grundlagen.md", "type": "method", "status": "stable", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "RAG.md", "target": "RAG.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:pre-migration"] },
+    { "source": "Wie-LLMs-funktionieren.md", "target": "Wie-LLMs-funktionieren.md", "type": "concept", "status": "stable", "sources": ["self-authored:loschke:pre-migration"] }
+  ]
+}
